@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- <div class="cover-all"></div> -->
+    <div id="collapse-btn" onclick="collapseButton()">-</div>
+
+    <div id="main-tab">
+        <h1>Gestión de tareas</h1>
+        <form id="form">
+            <input type="reset" id="form-reset">
+            <div id="row-1" class="form-row">
+                <div class="wrap">
+                    <label for="task-name">Nombre:</label>
+                    <input type="text" id="task-name" required>
+                </div>
+                
+            </div>
+            <div id="row-2" class="form-row">
+                <div class="wrap">
+                    <label for="task-creator">Creador:</label>
+                    <input type="text" id="task-creator" required>
+                </div>
+            </div>
+            <div id="row-3" class="form-row">
+                <div class="wrap">
+                    <label for="task-state">Estado:</label>
+                    <select id="task-state" required>
+                        <option value="not started">No iniciada</option>
+                        <option value="pending">En proceso</option>
+                        <option value="done">Finalizada</option>
+                    </select>
+                </div>
+            </div>
+            <div id="row-4" class="form-row">
+                <div class="wrap">
+                    <label for="task-desc">Descripción (opcional):</label>
+                    <textarea id="task-desc"></textarea>
+                </div>
+            </div>
+            <div id="row-5" class="form-row">
+                <div class="wrap">
+                    <label for="task-image">Imagen (optional)</label>
+                    <input type="file" id="task-image" accept="image/*">
+                    <div id="task-image-preview-wrapper">
+                        <img id="task-image-preview" class="hidden" src="" alt="preview">
+                    </div>
+                </div> 
+            </div>
+            <div id="row-6" class="form-row">
+                <div class="wrap">
+                    <input type="submit" value="Crear Tarea">
+                </div>     
+            </div>
+        </form>
+    </div>
+
+    <div id="tasks"></div>
+
+    <template id="task-template">
+        <div class="task-inner-wrapper">
+                <div class="task-header">
+                <div class="flex-space-between">
+                    <h3 class="task-title"></h3> 
+                    <span class="task-id"></span>
+                </div>
+                <div class="task-creator-text-wrapper">
+                    <span class="task-creator-text"></span>
+                </div>
+            </div>
+            <div class="task-content">
+            </div>
+            <div class="task-state-wrapper">
+                <span class="task-state"></span>
+            </div>
+            <div class="task-controls"></div>
+        </div>
+    </template>
+
+    <template id="button-template">
+        <button onclick="modifyTask(this)">Modify</button>
+        <button onclick="deleteTask(this)">Delete</button>
+    </template>
+
+    <template id="modify-form-template">
+        <form class="modify-form">
+            <div class="modify-form-inner-wrapper">
+                <div class="flex-space-between">
+                    <div class="wrap">
+                        <label for="task-name">Nombre:</label>
+                        <input type="text" class="m-task-name" required>
+                    </div>
+                    <button onclick="closeModifyForm(this)" type="button" class="modify-form-close-button">x</button>
+                </div>
+                <div class="wrap">
+                    <label for="task-creator">Creador:</label>
+                    <input type="text" class="m-task-creator" required>
+                </div>
+                <div class="wrap">
+                    <label for="task-state">Estado:</label>
+                    <select class="m-task-state" required>
+                        <option value="not started">No iniciada</option>
+                        <option value="pending">En proceso</option>
+                        <option value="done">Finalizada</option>
+                    </select>
+                </div>
+                <div class="wrap">
+                    <label for="task-desc">Descripción (opcional):</label>
+                    <textarea class="m-task-desc"></textarea>
+                </div>
+                <div class="wrap">
+                    <div style="display: flex; flex-direction: column;">
+                        <label for="task-image">Imagen (optional)</label>
+                        <input type="file" class="m-task-image" accept="image/*">
+                    </div>
+                    <div class="m-task-image-preview-wrapper">
+                        <img class="m-task-image-preview hidden" src="" alt="preview">
+                    </div>
+                </div> 
+
+                <input type="submit" value="Aceptar cambios">
+            </div>
+        </form>
+    </template>
+    <script src="script.js"></script>
+</body>
+</html>
