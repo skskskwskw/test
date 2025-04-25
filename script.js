@@ -96,7 +96,7 @@ class TaskList {
                 try {
                     this.element.appendChild(task.element)
                 } catch (error) {
-                    console.error("An error okuu'd. Posibly the task format is not correct:", error);
+                    console.error("An error okuu'd. Possibly the task format is not correct:", error);
                 }
             })
         } 
